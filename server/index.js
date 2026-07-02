@@ -1,5 +1,6 @@
 require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
+const app = express();
 const cors = require('cors');
 
 const app = express();
@@ -25,3 +26,7 @@ app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Work Desk API on port ${PORT} → Supabase connected`));
+
+
+// Export for Vercel Serverless Functions
+module.exports = app;
